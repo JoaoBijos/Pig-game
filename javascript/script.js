@@ -13,3 +13,7 @@ var dice = Math.floor(Math.random() * 6) + 1
 // pegando um elemento HTML e alterando o seu conteúdo para o conteúdo do dado
 // colocando o activePlayer, a ação será feita para quem estiver jogando
 document.querySelector('#current--' + activePlayer).textContent = dice; 
+
+
+// pegamos a imagem do dado e fazemos com que ela não apareça quando o jogo for aberto
+document.querySelector('.dice').style.display = 'none';
