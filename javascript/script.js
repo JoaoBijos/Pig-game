@@ -8,7 +8,6 @@ var roundScore = 0;
 var activePlayer = 0; // 0 = primeiro jogador, 1 = o segundo jogador 
 
 
-
 // pegando um elemento HTML e alterando o seu conteúdo para o conteúdo do dado
 // colocando o activePlayer, a ação será feita para quem estiver jogando
 // document.querySelector('#current--' + activePlayer).textContent = dice; 
@@ -57,16 +56,56 @@ function btn(){
         document.querySelector('.player--1').classList.toggle('player--active')
 
         // zeramos o dado escondendo ele
-        document.querySelector('.dice').style.display = 'none';
+        // document.querySelector('.dice').style.display = 'none';
 
         // adiciona os pontos na pontuação geral
         
     }
 }
 
-
 // fazendo a funcionalidade do botão roll dice
 // o addEventListener é o que vai dar as funcionalidades ao botão 
 // declaramos que o tipo do nosso evento será um 'click'
 // após isso declaramos qual funçào deverá ser realizada quando o evento acontecer
 document.querySelector('.btn--roll').addEventListener('click', btn)
+
+
+function hold(){
+    // somar a pontuação da rodada com a pontuação total
+    scores[activePlayer] += roundScore;
+
+    // mostra a pontuação global atualizada 
+    document.querySelector('#score--' + activePlayer).textContent = scores[activePlayer]
+
+    // passa a vez 
+    activePlayer === 0 ? activePlayer = 1 : activePlayer = 0
+
+    // zerar a pontuação da rodada
+    roundScore = 0;
+    document.getElementById('current--0').textContent = '0'
+    document.getElementById('current--1').textContent = '0'
+
+    // mostrando quem é o player atual 
+    // toggle tira a class se ela estiver lá, e coloca se não estiver; 
+    document.querySelector('.player--0').classList.toggle('player--active')
+    document.querySelector('.player--1').classList.toggle('player--active')
+
+    // verificar se o jogador ganhou o jogo
+}
+
+document.querySelector('.btn--hold').addEventListener('click', hold)
+
+function nextPlayer() {
+    // passa a vez 
+        activePlayer === 0 ? activePlayer = 1 : activePlayer = 0
+
+        // zerar a pontuação da rodada
+        roundScore = 0;
+        document.getElementById('current--0').textContent = '0'
+        document.getElementById('current--1').textContent = '0'
+
+        // mostrando quem é o player atual 
+        // toggle tira a class se ela estiver lá, e coloca se não estiver; 
+        document.querySelector('.player--0').classList.toggle('player--active')
+        document.querySelector('.player--1').classList.toggle('player--active')
+}
