@@ -35,13 +35,13 @@
     display: flex;
   }
   
-  .player {
+  .player--0, .player--1 {
     flex: 50%;
     padding: 9rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-    transition: all 0.75s;
+    transition: all 0.01s;
   }
   
   /* ELEMENTS */
@@ -63,7 +63,7 @@
   }
   
   .player--active {
-    background-color: rgba(255, 255, 255, 0.4);
+    background-color: rgba(255, 255, 255, 0.445);
   }
   .player--active .name {
     font-weight: 700;
@@ -153,7 +153,7 @@
     top: 16.5rem;
     transform: translateX(-50%);
     height: 10rem;
-    box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.2);
+    box-shadow: 1rem 2rem 5rem rgba(0, 0, 0, 0.2);
   }
   
   .player--winner {

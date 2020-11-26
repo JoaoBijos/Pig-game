@@ -17,6 +17,11 @@ var activePlayer = 0; // 0 = primeiro jogador, 1 = o segundo jogador
 // pegamos a imagem do dado e fazemos com que ela não apareça quando o jogo for aberto
 document.querySelector('.dice').style.display = 'none';
 
+// recupera o valor do score total
+document.getElementById('score--0').textContent = 0
+document.getElementById('score--1').textContent = 0
+document.getElementById('current--0').textContent = 0
+document.getElementById('current--1').textContent = 0
 
 function btn(){
     console.log('ksjbfkdjsa')
@@ -33,6 +38,30 @@ function btn(){
     diceDOM.src = './img/dice-' + dice + '.png';
 
     // 3 - atualizar a pontuação da rodada se o número não for 1 
+    if(dice !== 1){
+        // adiciona pontos 
+        roundScore += dice;
+        document.querySelector('#current--' + activePlayer).textContent = roundScore;
+    } else{
+        // passa a vez 
+        activePlayer === 0 ? activePlayer = 1 : activePlayer = 0
+
+        // zerar a pontuação da rodada
+        roundScore = 0;
+        document.getElementById('current--0').textContent = '0'
+        document.getElementById('current--1').textContent = '0'
+
+        // mostrando quem é o player atual 
+        // toggle tira a class se ela estiver lá, e coloca se não estiver; 
+        document.querySelector('.player--0').classList.toggle('player--active')
+        document.querySelector('.player--1').classList.toggle('player--active')
+
+        // zeramos o dado escondendo ele
+        document.querySelector('.dice').style.display = 'none';
+
+        // adiciona os pontos na pontuação geral
+        
+    }
 }
 
 
