@@ -82,6 +82,8 @@ function hold(){
     if (scores[activePlayer] >= 30) {
         document.querySelector('#name--' + activePlayer).textContent = 'WINNER!';
         document.querySelector('.dice').style.display = 'none'
+        document.querySelector('.player--' + activePlayer).classList.add('player--winner');
+        document.querySelector('.player--' + activePlayer).classList.remove('player--active');
     } else {
         // passa a vez 
          nextPlayer();

@@ -157,7 +157,7 @@
   }
   
   .player--winner {
-    background-color: #2f2f2f;
+    background-image: linear-gradient(to top left, #c8fafc 0%, #107275 100%);
   }
   
   .player--winner .name {
