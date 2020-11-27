@@ -22,6 +22,23 @@ document.getElementById('score--1').textContent = 0
 document.getElementById('current--0').textContent = 0
 document.getElementById('current--1').textContent = 0
 
+
+function nextPlayer() {
+    // passa a vez 
+        activePlayer === 0 ? activePlayer = 1 : activePlayer = 0
+
+        // zerar a pontuação da rodada
+        roundScore = 0;
+        document.getElementById('current--0').textContent = '0'
+        document.getElementById('current--1').textContent = '0'
+
+        // mostrando quem é o player atual 
+        // toggle tira a class se ela estiver lá, e coloca se não estiver; 
+        document.querySelector('.player--0').classList.toggle('player--active')
+        document.querySelector('.player--1').classList.toggle('player--active')
+}
+
+
 function btn(){
     console.log('ksjbfkdjsa')
     // 1 - precisamos de um número aleatório 
@@ -43,23 +60,7 @@ function btn(){
         document.querySelector('#current--' + activePlayer).textContent = roundScore;
     } else{
         // passa a vez 
-        activePlayer === 0 ? activePlayer = 1 : activePlayer = 0
-
-        // zerar a pontuação da rodada
-        roundScore = 0;
-        document.getElementById('current--0').textContent = '0'
-        document.getElementById('current--1').textContent = '0'
-
-        // mostrando quem é o player atual 
-        // toggle tira a class se ela estiver lá, e coloca se não estiver; 
-        document.querySelector('.player--0').classList.toggle('player--active')
-        document.querySelector('.player--1').classList.toggle('player--active')
-
-        // zeramos o dado escondendo ele
-        // document.querySelector('.dice').style.display = 'none';
-
-        // adiciona os pontos na pontuação geral
-        
+        nextPlayer();
     }
 }
 
@@ -77,35 +78,25 @@ function hold(){
     // mostra a pontuação global atualizada 
     document.querySelector('#score--' + activePlayer).textContent = scores[activePlayer]
 
-    // passa a vez 
-    activePlayer === 0 ? activePlayer = 1 : activePlayer = 0
-
-    // zerar a pontuação da rodada
-    roundScore = 0;
-    document.getElementById('current--0').textContent = '0'
-    document.getElementById('current--1').textContent = '0'
-
-    // mostrando quem é o player atual 
-    // toggle tira a class se ela estiver lá, e coloca se não estiver; 
-    document.querySelector('.player--0').classList.toggle('player--active')
-    document.querySelector('.player--1').classList.toggle('player--active')
-
     // verificar se o jogador ganhou o jogo
+    if (scores[activePlayer] >= 30) {
+        document.querySelector('#name--' + activePlayer).textContent = 'WINNER!';
+        document.querySelector('.dice').style.display = 'none'
+    } else {
+        // passa a vez 
+         nextPlayer();
+    }
 }
 
 document.querySelector('.btn--hold').addEventListener('click', hold)
 
-function nextPlayer() {
-    // passa a vez 
-        activePlayer === 0 ? activePlayer = 1 : activePlayer = 0
 
-        // zerar a pontuação da rodada
-        roundScore = 0;
-        document.getElementById('current--0').textContent = '0'
-        document.getElementById('current--1').textContent = '0'
-
-        // mostrando quem é o player atual 
-        // toggle tira a class se ela estiver lá, e coloca se não estiver; 
-        document.querySelector('.player--0').classList.toggle('player--active')
-        document.querySelector('.player--1').classList.toggle('player--active')
+function newgame(){ 
+    document.getElementById('score--0').textContent = '0';
+    document.getElementById('score--1').textContent = '0';
+    document.getElementById('current--0').textContent = '0';
+    document.getElementById('current--1').textContent = '0';
 }
+
+
+document.querySelector('.btn--new').addEventListener('click', newgame)
