@@ -25,22 +25,21 @@ document.getElementById('current--1').textContent = 0
 
 function nextPlayer() {
     // passa a vez 
-        activePlayer === 0 ? activePlayer = 1 : activePlayer = 0
+    activePlayer === 0 ? activePlayer = 1 : activePlayer = 0
 
-        // zerar a pontuação da rodada
-        roundScore = 0;
-        document.getElementById('current--0').textContent = '0'
-        document.getElementById('current--1').textContent = '0'
+    // zerar a pontuação da rodada
+    roundScore = 0;
+    document.getElementById('current--0').textContent = '0'
+    document.getElementById('current--1').textContent = '0'
 
-        // mostrando quem é o player atual 
-        // toggle tira a class se ela estiver lá, e coloca se não estiver; 
-        document.querySelector('.player--0').classList.toggle('player--active')
-        document.querySelector('.player--1').classList.toggle('player--active')
+    // mostrando quem é o player atual 
+    // toggle tira a class se ela estiver lá, e coloca se não estiver; 
+    document.querySelector('.player--0').classList.toggle('player--active')
+    document.querySelector('.player--1').classList.toggle('player--active')
 }
 
 
 function btn(){
-    console.log('ksjbfkdjsa')
     // 1 - precisamos de um número aleatório 
     // criando o dado
     var dice = Math.floor(Math.random() * 6) + 1;
@@ -86,7 +85,7 @@ function hold(){
         document.querySelector('.player--' + activePlayer).classList.remove('player--active');
     } else {
         // passa a vez 
-         nextPlayer();
+        nextPlayer();
     }
 }
 
@@ -94,10 +93,9 @@ document.querySelector('.btn--hold').addEventListener('click', hold)
 
 
 function newgame(){ 
-    document.getElementById('score--0').textContent = '0';
-    document.getElementById('score--1').textContent = '0';
-    document.getElementById('current--0').textContent = '0';
-    document.getElementById('current--1').textContent = '0';
+    scores = [0,0];
+    activePlayer = 0;
+    roundScore = 0;
 }
 
 

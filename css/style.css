@@ -153,7 +153,7 @@
     top: 16.5rem;
     transform: translateX(-50%);
     height: 10rem;
-    box-shadow: 1rem 2rem 5rem rgba(0, 0, 0, 0.2);
+    box-shadow: 1rem 2rem 5rem #8df1f5;
   }
   
   .player--winner {
